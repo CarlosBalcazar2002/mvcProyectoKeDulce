@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository
 {
-    public interface IProductoRepository : IRepository<Producto>
+    public interface IUsuarioRepository : IRepository<ApplicationUser>
     {
-        void Update(Producto producto);
+        void BloquearUsuario(string IdUsuario);
+        void DesbloquearUsuario(string IdUsuario);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
 using mvcProyectoKeDulce.Data;
-using mvcProyectoKeDulce.Modelos;
+using mvcProyectoKeDulce.Modelos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

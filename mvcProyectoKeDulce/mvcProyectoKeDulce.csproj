@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\mvcProyectoKeDulce.AccesoDatos\mvcProyectoKeDulce.AccesoDatos.csproj" />
   </ItemGroup>
 

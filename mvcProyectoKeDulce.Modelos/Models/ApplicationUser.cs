@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mvcProyectoKeDulce.Modelos
+namespace mvcProyectoKeDulce.Modelos.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [Required(ErrorMessage ="El Nombre Es Obligatorio")]
+        [Required(ErrorMessage = "El Nombre Es Obligatorio")]
         public string Nombre { get; set; }
         [Required(ErrorMessage = "La Direccion Es Obligatorio")]
         public string Direccion { get; set; }

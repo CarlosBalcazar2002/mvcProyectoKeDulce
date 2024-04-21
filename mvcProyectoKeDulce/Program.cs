@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
 using mvcProyectoKeDulce.AccesoDatos.Data.Repository;
 using mvcProyectoKeDulce.Data;
-using mvcProyectoKeDulce.Modelos;
+using mvcProyectoKeDulce.Modelos.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +14,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+//modificar para que se administre el manejo de roles
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultUI();
 builder.Services.AddControllersWithViews();
 
 //agregar contenedor de trabajo al contenedos IoC de inyeccion de dependencias

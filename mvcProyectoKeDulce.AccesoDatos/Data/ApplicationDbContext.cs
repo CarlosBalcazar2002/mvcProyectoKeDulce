@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using mvcProyectoKeDulce.Modelos;
+using mvcProyectoKeDulce.Modelos.Models;
 
 namespace mvcProyectoKeDulce.Data
 {
@@ -15,4 +15,5 @@ namespace mvcProyectoKeDulce.Data
         public DbSet<Producto> Producto { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
+
 }

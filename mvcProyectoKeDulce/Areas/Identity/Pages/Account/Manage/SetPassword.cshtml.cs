@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using mvcProyectoKeDulce.Modelos;
+using mvcProyectoKeDulce.Modelos.Models;
 
 namespace mvcProyectoKeDulce.Areas.Identity.Pages.Account.Manage
 {

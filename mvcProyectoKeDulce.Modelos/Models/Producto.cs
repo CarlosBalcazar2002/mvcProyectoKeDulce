@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mvcProyectoKeDulce.Modelos
+namespace mvcProyectoKeDulce.Modelos.Models
 {
     public class Producto
     {
