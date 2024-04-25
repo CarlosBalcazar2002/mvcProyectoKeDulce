@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace mvcProyectoKeDulce.Modelos.Models
+namespace mvcProyectoKeDulce.Utilidades
 {
     public class Roles
     {
         public const string Administrador = "Administrador";
-        public const string Registrado = "Registrado";
+        public const string Registrado = "Registrado ";
         public const string Cliente = "Cliente";
     }
 }
