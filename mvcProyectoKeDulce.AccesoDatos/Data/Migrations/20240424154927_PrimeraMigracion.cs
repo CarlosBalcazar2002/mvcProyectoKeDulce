@@ -5,7 +5,7 @@
 namespace mvcProyectoKeDulce.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class migracionderoless : Migration
+    public partial class PrimeraMigracion : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
