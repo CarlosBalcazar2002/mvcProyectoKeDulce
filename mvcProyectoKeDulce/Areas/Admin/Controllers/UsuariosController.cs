@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
 using System.Security.Claims;
 
 namespace mvcProyectoKeDulce.Areas.Admin.Controllers
 {
+   
     [Area("Admin")]
     public class UsuariosController : Controller
     {
