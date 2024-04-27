@@ -4,6 +4,8 @@ using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
 using mvcProyectoKeDulce.AccesoDatos.Data.Repository;
 using mvcProyectoKeDulce.Data;
 using mvcProyectoKeDulce.Modelos.Models;
+using mvcProyectoKeDulce.AccesoDatos.Data.Inicializador;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,10 @@ builder.Services.AddControllersWithViews();
 //agregar contenedor de trabajo al contenedos IoC de inyeccion de dependencias
 builder.Services.AddScoped<IContenedorTrabajo, ContenedorTrabajo>();
 
+//Siembra de datos - Paso 1
+builder.Services.AddScoped<IInicializadorBD, InicializadorBD>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,6 +46,9 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+//Siembra de datos - Paso 2 Metodo que ejecuta la siembra de datos
+SiembraDatos();
+
 app.UseRouting();
 
 app.UseAuthorization();
@@ -50,3 +59,13 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
+//Funcionalidad metodo SiembraDeDatos();
+void SiembraDatos()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var inicializadorBD = scope.ServiceProvider.GetRequiredService<IInicializadorBD>();
+        inicializadorBD.Inicializar();
+    }
+}
