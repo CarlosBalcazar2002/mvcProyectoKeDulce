@@ -12,8 +12,8 @@ using mvcProyectoKeDulce.Data;
 namespace mvcProyectoKeDulce.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240424154927_PrimeraMigracion")]
-    partial class PrimeraMigracion
+    [Migration("20240427193947_CargadoDeDatos")]
+    partial class CargadoDeDatos
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
