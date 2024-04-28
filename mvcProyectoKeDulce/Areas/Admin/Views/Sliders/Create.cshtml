@@ -1,4 +1,4 @@
-﻿@model mvcProyectoKeDulce.Modelos.Models.SliderProducto
+@model mvcProyectoKeDulce.Modelos.Models.SliderProducto
 @{
     ViewData["Title"] = "Crear Producto";
 }
@@ -8,12 +8,14 @@
     <div class="row px-2 offset-1 border mt-4">
         <div asp-validation-summary="All" class="text-danger mt-1"></div>
         <div class="col-10 offset-1">
+
             <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Nombre"></label>
                 </div>
                 <div class="col-8">
                     <input asp-for="Nombre" class="form-control" placeholder="Ingresa el nombre del Producto" />
+
                     <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
             </div>

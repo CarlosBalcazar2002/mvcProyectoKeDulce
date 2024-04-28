@@ -17,6 +17,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
             _context = context;
             //se agregan cada uno de los repositorios para que queden encapsulados
             Usuario = new UsuarioRepository(_context);
+
             SliderProducto = new SliderRepository(_context);
         }
         public IUsuarioRepository Usuario { get; private set; }
