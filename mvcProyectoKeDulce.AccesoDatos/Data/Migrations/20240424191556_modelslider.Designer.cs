@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvcProyectoKeDulce.Data;
 
@@ -11,9 +12,11 @@ using mvcProyectoKeDulce.Data;
 namespace mvcProyectoKeDulce.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240424191556_modelslider")]
+    partial class modelslider
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -256,9 +259,7 @@ namespace mvcProyectoKeDulce.Data.Migrations
                     b.ToTable("Producto");
                 });
 
-
-            modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.SliderProducto", b =>
-
+            modelBuilder.Entity("mvcProyectoKeDulce.Models.Slider", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -274,14 +275,12 @@ namespace mvcProyectoKeDulce.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UrlImagen")
-
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-
-                    b.ToTable("SliderProducto");
-
+                    b.ToTable("Slider");
                 });
 
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", b =>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
 {
+
     public class SliderRepository : Repository<SliderProducto>, ISliderRepository
     {
         private readonly ApplicationDbContext _db;
@@ -16,6 +17,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
         {
             _db = db;
         }
+
 
         public void Update(SliderProducto sliderProducto)
         {
@@ -26,3 +28,4 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
         }
     }
 }
+
