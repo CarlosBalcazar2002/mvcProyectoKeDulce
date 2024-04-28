@@ -12,8 +12,8 @@ using mvcProyectoKeDulce.Data;
 namespace mvcProyectoKeDulce.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240424154927_PrimeraMigracion")]
-    partial class PrimeraMigracion
+    [Migration("20240427231915_slidersproductos")]
+    partial class slidersproductos
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -257,6 +257,30 @@ namespace mvcProyectoKeDulce.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Producto");
+                });
+
+            modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.SliderProducto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrlImagen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SliderProducto");
                 });
 
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", b =>

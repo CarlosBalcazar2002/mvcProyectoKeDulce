@@ -1,21 +1,21 @@
-﻿@model mvcProyectoKeDulce.Models.Slider
+@model mvcProyectoKeDulce.Modelos.Models.SliderProducto
 @{
-    ViewData["Title"] = "Editar Slider";
+    ViewData["Title"] = "Editar Producto";
 }
 <br />
-<h3 class="text-center">Editar Slider</h3>
+<h3 class="text-center">Editar Producto</h3>
 <form method="POST" asp-action="Edit" enctype="multipart/form-data">
     <!--Enviar id como campo oculto-->
     <input type="hidden" asp-for="Id" />
     <div class="row px-2 offset-1 border">
         <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="col-8 mt-4">
+        <div class="col-8 mt-5">
             <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Nombre"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Nombre" class="form-control" placeholder="Ingresa el nombre del slider" />
+                    <input asp-for="Nombre" class="form-control" placeholder="Ingresa el nombre del Producto" />
                     <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
             </div>
@@ -42,7 +42,8 @@
             <br />
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary form-control">Editar Slider</button>
+                    <button type="submit" class="btn btn-primary form-control">Editar Producto</button>
+
                 </div>
                 &nbsp;
                 <div class="col">

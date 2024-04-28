@@ -1,19 +1,19 @@
-﻿@model mvcProyectoKeDulce.Models.Slider
+@model mvcProyectoKeDulce.Modelos.Models.SliderProducto
 @{
-    ViewData["Title"] = "Crear Slider";
+    ViewData["Title"] = "Crear Producto";
 }
 <br />
-<h3 class="text-center">Crear un nuevo Slider</h3>
+<h3 class="text-center">Crear un nuevo Producto</h3>
 <form method="POST" asp-action="Create" enctype="multipart/form-data">
-    <div class="row px-2 offset-1 border">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="col-10 offset-1 mt-4">
+    <div class="row px-2 offset-1 border mt-4">
+        <div asp-validation-summary="All" class="text-danger mt-1"></div>
+        <div class="col-10 offset-1">
             <div class="form-group row">
                 <div class="col-4">
                     <label asp-for="Nombre"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Nombre" class="form-control" placeholder="Ingresa el nombre del slider" />
+                    <input asp-for="Nombre" class="form-control" placeholder="Ingresa el nombre del Producto" />
                     <span asp-validation-for="Nombre" class="text-danger"></span>
                 </div>
             </div>
