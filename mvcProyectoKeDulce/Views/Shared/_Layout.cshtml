@@ -8,6 +8,13 @@
     <link href="~/css/bootstrap.min(3).css" rel="stylesheet" />
    @*  <link href="~/css/bootstrap.min(2).css" rel="stylesheet" /> *@
     @* <link href="~/css/style.css" rel="stylesheet" /> *@
+<<<<<<< HEAD
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<<<<<<< HEAD
+    <link rel="stylesheet" href="~/mvcProyectoKeDulce.styles.css" asp-append-version="true" />
+=======
+>>>>>>> 27ade71b41be8fbcab9570f5e78676b6001d1221
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 @*     <link rel="stylesheet" href="~/mvcProyectoKeDulce.styles.css" asp-append-version="true" />
@@ -20,6 +27,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
+=======
+@*     <link rel="stylesheet" href="~/mvcProyectoKeDulce.styles.css" asp-append-version="true" />
+
+ *@</head>
+>>>>>>> Usuario Base De Datos, Carrousel Principal, Y Arreglos Visual
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" data-bs-theme="dark">
@@ -39,7 +51,11 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acerca De</a>
                             <div class="dropdown-menu">
+<<<<<<< HEAD
+                                <a class="dropdown-item" href="#">KeDulce</a>
+=======
                                 <a class="dropdown-item">KeDulce</a>
+>>>>>>> 27ade71b41be8fbcab9570f5e78676b6001d1221
                                 <a class="dropdown-item" href="https://wa.me/+59176096585">Contactos</a>
                             </div>
                         </li>
@@ -51,8 +67,11 @@
                                     <a class="dropdown-item" href="#">Pedido</a>
                                     <a class="dropdown-item" href="#">Ventas</a>
                                     <a class="dropdown-item" href="#">Clientes</a>
+<<<<<<< HEAD
+=======
                                     <a class="dropdown-item" asp-area="Admin"
                                        asp-controller="Sliders" asp-action="Index">Slider Para Productos</a>
+>>>>>>> 27ade71b41be8fbcab9570f5e78676b6001d1221
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Usuarios"
                                        asp-action="Index">Usuarios</a>
                                 </div>
@@ -97,7 +116,21 @@
                     <partial name="_LoginPartial" />
                 </div>
             </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+        </nav>
+        <!--vista del Slider-->
+        @if (ViewBag.IsHome == true)
+        {
+            <partial name ="_Slider" />
+        }
+
+=======
         </nav> *@
+>>>>>>> Usuario Base De Datos, Carrousel Principal, Y Arreglos Visual
+=======
+        </nav> *@
+>>>>>>> 27ade71b41be8fbcab9570f5e78676b6001d1221
     </header>
     <div class="container">
         <main role="main" class="pb-3">
