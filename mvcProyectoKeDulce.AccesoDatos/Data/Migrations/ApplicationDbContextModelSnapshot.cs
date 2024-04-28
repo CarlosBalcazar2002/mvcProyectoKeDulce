@@ -256,7 +256,9 @@ namespace mvcProyectoKeDulce.Data.Migrations
                     b.ToTable("Producto");
                 });
 
-            modelBuilder.Entity("mvcProyectoKeDulce.Models.Slider", b =>
+
+            modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.SliderProducto", b =>
+
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -272,12 +274,14 @@ namespace mvcProyectoKeDulce.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UrlImagen")
-                        .IsRequired()
+
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Slider");
+
+                    b.ToTable("SliderProducto");
+
                 });
 
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", b =>

@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
 using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
-using mvcProyectoKeDulce.Models;
-//using Microsoft.AspNetCore.Mvc;
+using mvcProyectoKeDulce.Modelos.Models;
+using Microsoft.AspNetCore.Authorization;
+using NuGet.Protocol.Plugins;
 
-namespace mvcProyectoWeb.Areas.Admin.Controllers
+namespace mvcProyectoKeDulce.Areas.Admin.Controllers
+
 {
     [Authorize(Roles = "Administrador")]
     [Area("Admin")]
@@ -24,7 +25,9 @@ namespace mvcProyectoWeb.Areas.Admin.Controllers
         public IActionResult Create() { return View(); }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Slider slider)
+
+        public IActionResult Create(SliderProducto slider)
+
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +44,7 @@ namespace mvcProyectoWeb.Areas.Admin.Controllers
                         archivos[0].CopyTo(fileStreams);
                     }
                     slider.UrlImagen = @"\imagenes\sliders\" + nombreArchivo + extension;
-                    _contenedorTrabajo.Slider.Add(slider);
+                    _contenedorTrabajo.SliderProducto.Add(slider);
                     _contenedorTrabajo.Save();
                     return RedirectToAction(nameof(Index));
                 }
@@ -58,7 +61,7 @@ namespace mvcProyectoWeb.Areas.Admin.Controllers
         {
             if (id != null)
             {
-                var slider = _contenedorTrabajo.Slider.Get(id.GetValueOrDefault());
+                var slider = _contenedorTrabajo.SliderProducto.Get(id.GetValueOrDefault());
                 return View(slider);
             }
 
@@ -66,14 +69,16 @@ namespace mvcProyectoWeb.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Slider slider)
+        public IActionResult Edit(SliderProducto slider)
+
         {
             if (ModelState.IsValid)
             {
                 string rutaPrincipal = _hostingEnvironment.WebRootPath;
                 var archivos = HttpContext.Request.Form.Files;
 
-                var sliderDdesdeBd = _contenedorTrabajo.Slider.Get(slider.Id);
+
+                var sliderDdesdeBd = _contenedorTrabajo.SliderProducto.Get(slider.Id);
 
                 if (archivos.Count() > 0)
                 {
@@ -93,7 +98,7 @@ namespace mvcProyectoWeb.Areas.Admin.Controllers
                         archivos[0].CopyTo(fileStreams);
                     }
                     slider.UrlImagen = @"\imagenes\sliders\" + nombreArchivo + extension;
-                    _contenedorTrabajo.Slider.Update(slider);
+                    _contenedorTrabajo.SliderProducto.Update(slider);
                     _contenedorTrabajo.Save();
                     return RedirectToAction(nameof(Index));
                 }
@@ -102,7 +107,7 @@ namespace mvcProyectoWeb.Areas.Admin.Controllers
                     //Aquí sería cuando la imagen ya existe y se conserva
                     slider.UrlImagen = sliderDdesdeBd.UrlImagen;
                 }
-                _contenedorTrabajo.Slider.Update(slider);
+                _contenedorTrabajo.SliderProducto.Update(slider);
                 _contenedorTrabajo.Save();
                 return RedirectToAction(nameof(Index));
             }
@@ -111,11 +116,11 @@ namespace mvcProyectoWeb.Areas.Admin.Controllers
         #region Llamadas a la API
         [HttpGet]
         public IActionResult GetAll()
-        { return Json(new { data = _contenedorTrabajo.Slider.GetAll() }); }
+        { return Json(new { data = _contenedorTrabajo.SliderProducto.GetAll() }); }
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var sliderDesdeBd = _contenedorTrabajo.Slider.Get(id);
+            var sliderDesdeBd = _contenedorTrabajo.SliderProducto.Get(id);
             string rutaDirectorioPrincipal = _hostingEnvironment.WebRootPath;
             var rutaImagen = Path.Combine(rutaDirectorioPrincipal, sliderDesdeBd.UrlImagen.TrimStart('\\'));
             if (System.IO.File.Exists(rutaImagen))
@@ -126,7 +131,8 @@ namespace mvcProyectoWeb.Areas.Admin.Controllers
             {
                 return Json(new { success = false, message = "Error borrando slider" });
             }
-            _contenedorTrabajo.Slider.Remove(sliderDesdeBd);
+            _contenedorTrabajo.SliderProducto.Remove(sliderDesdeBd);
+
             _contenedorTrabajo.Save();
             return Json(new { success = true, message = "Slider Borrado Correctamente" });
         }
