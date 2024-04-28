@@ -1,4 +1,5 @@
-﻿using System;
+﻿using mvcProyectoKeDulce.Modelos.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository
 {
-    public interface IContenedorTrabajo : IDisposable
+    public interface ISliderRepository : IRepository<SliderProducto>
     {
-        IUsuarioRepository Usuario { get; }
-        ISliderRepository SliderProducto { get; }
-        void Save();
+        void Update(SliderProducto sliderProducto);
     }
 }
