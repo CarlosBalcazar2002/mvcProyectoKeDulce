@@ -60,7 +60,6 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
             if (id != null)
             {
                 var slider = _contenedorTrabajo.SliderProducto.Get(id.GetValueOrDefault());
-
                 return View(slider);
             }
 
@@ -68,7 +67,6 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public IActionResult Edit(SliderProducto slider)
 
         {
@@ -79,7 +77,6 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
 
 
                 var sliderDdesdeBd = _contenedorTrabajo.SliderProducto.Get(slider.Id);
-
 
                 if (archivos.Count() > 0)
                 {
@@ -100,6 +97,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                     }
                     slider.UrlImagen = @"\imagenes\sliders\" + nombreArchivo + extension;
 
+
                     _contenedorTrabajo.SliderProducto.Update(slider);
 
                     _contenedorTrabajo.Save();
@@ -110,6 +108,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                     //Aquí sería cuando la imagen ya existe y se conserva
                     slider.UrlImagen = sliderDdesdeBd.UrlImagen;
                 }
+
 
                 _contenedorTrabajo.SliderProducto.Update(slider);
 
@@ -127,7 +126,6 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         public IActionResult Delete(int id)
         {
             var sliderDesdeBd = _contenedorTrabajo.SliderProducto.Get(id);
-
             string rutaDirectorioPrincipal = _hostingEnvironment.WebRootPath;
             var rutaImagen = Path.Combine(rutaDirectorioPrincipal, sliderDesdeBd.UrlImagen.TrimStart('\\'));
             if (System.IO.File.Exists(rutaImagen))
@@ -138,7 +136,6 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
             {
                 return Json(new { success = false, message = "Error borrando slider" });
             }
-
             _contenedorTrabajo.SliderProducto.Remove(sliderDesdeBd);
 
             _contenedorTrabajo.Save();

@@ -16,6 +16,7 @@ namespace mvcProyectoKeDulce.Data
         public DbSet<Producto> Producto { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<SliderProducto> SlidrProducto { get; set; }
+
     }
 
 }

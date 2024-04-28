@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
+
 @*     <link rel="stylesheet" href="~/mvcProyectoKeDulce.styles.css" asp-append-version="true" />
 
  *@
@@ -21,6 +22,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
+
+@*     <link rel="stylesheet" href="~/mvcProyectoKeDulce.styles.css" asp-append-version="true" />
+
+ *@</head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top" data-bs-theme="dark">
@@ -40,7 +46,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acerca De</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item">KeDulce</a>
+
+                                <a class="dropdown-item" href="#">KeDulce</a>
+
                                 <a class="dropdown-item" href="https://wa.me/+59176096585">Contactos</a>
                             </div>
                         </li>
@@ -52,8 +60,8 @@
                                     <a class="dropdown-item" href="#">Pedido</a>
                                     <a class="dropdown-item" href="#">Ventas</a>
                                     <a class="dropdown-item" href="#">Clientes</a>
-                                    <a class="dropdown-item" asp-area="Admin"
-                                       asp-controller="Sliders" asp-action="Index">Slider Para Productos</a>
+
+
                                     <a class="dropdown-item" asp-area="Admin" asp-controller="Usuarios"
                                        asp-action="Index">Usuarios</a>
                                 </div>
@@ -98,8 +106,12 @@
                     <partial name="_LoginPartial" />
                 </div>
             </div>
-
         </nav> *@
+        <!--vista del Slider-->
+        @if (ViewBag.IsHome == true)
+        {
+            <partial name ="_Slider" />
+        }
 
     </header>
     <div class="container">
@@ -113,7 +125,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!--Js plugins-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.min.js"></script>
