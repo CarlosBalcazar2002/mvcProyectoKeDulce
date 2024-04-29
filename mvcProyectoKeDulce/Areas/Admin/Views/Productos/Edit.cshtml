@@ -1,4 +1,4 @@
-﻿@model mvcProyectoKeDulce.Modelos.Models.SliderProducto
+﻿@model mvcProyectoKeDulce.Modelos.Models.Producto
 @{
     ViewData["Title"] = "Editar Producto";
 }
@@ -12,31 +12,41 @@
         <div class="col-8 mt-5">
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Nombre"></label>
+                    <label asp-for="NombreProducto"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="Nombre" class="form-control" placeholder="Ingresa el nombre del Producto" />
-                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                    <input asp-for="NombreProducto" class="form-control" placeholder="Ingresa el nombre del Producto" />
+                    <span asp-validation-for="NombreProducto" class="text-danger"></span>
                 </div>
             </div>
             <br />
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Estado"></label>
+                    <label asp-for="Descripcion"></label>
                 </div>
                 <div class="col-8">
-                    <input type="checkbox" asp-for="Estado" />
-                    <span asp-validation-for="Estado" class="text-danger"></span>
+                    <input asp-for="Descripcion" class="form-control" placeholder="Ingresa la descripción del Producto" />
+                    <span asp-validation-for="Descripcion" class="text-danger"></span>
                 </div>
             </div>
             <br />
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="UrlImagen"></label>
+                    <label asp-for="Precio"></label>
+                </div>
+                <div class="col-2">
+                    <input type="number" asp-for="Precio" class="form-control" placeholder="Ingresa el precio del Producto" />
+                    <span asp-validation-for="Precio" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="ImagenUrl"></label>
                 </div>
                 <div class="col-8">
                     <input type="file" name="archivos" id="subidaArchivo" class="form-control" />
-                    <span asp-validation-for="UrlImagen" class="text-danger"></span>
+                    <span asp-validation-for="ImagenUrl" class="text-danger"></span>
                 </div>
             </div>
             <br />
@@ -51,7 +61,7 @@
             </div>
         </div>
         <div class="col-4 pt-3">
-            <img src="@Model.UrlImagen" width="300px" style="border-radius:5px; border:1px solid #bbb9b9" />
+            <img src="@Model.ImagenUrl" width="300px" style="border-radius:5px; border:1px solid #bbb9b9" />
         </div>
     </div>
 </form>
