@@ -5,15 +5,14 @@ using Microsoft.AspNetCore.Authorization;
 using NuGet.Protocol.Plugins;
 
 namespace mvcProyectoKeDulce.Areas.Admin.Controllers
-
 {
     [Authorize(Roles = "Administrador")]
     [Area("Admin")]
-    public class SlidersController : Controller
+    public class ProductosController : Controller
     {
         private readonly IContenedorTrabajo _contenedorTrabajo;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public SlidersController(IContenedorTrabajo contenedorTrabajo,
+        public ProductosController(IContenedorTrabajo contenedorTrabajo,
             IWebHostEnvironment hostingEnvironment)
         {
             _contenedorTrabajo = contenedorTrabajo;
@@ -25,8 +24,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         public IActionResult Create() { return View(); }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(SliderProducto slider)
-
+        public IActionResult Create(Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -34,16 +32,16 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                 var archivos = HttpContext.Request.Form.Files;
                 if (archivos.Count() > 0)
                 {
-                    //Nuevo slider
+                    //Nuevo producto
                     string nombreArchivo = Guid.NewGuid().ToString();
-                    var subidas = Path.Combine(rutaPrincipal, @"imagenes\sliders");
+                    var subidas = Path.Combine(rutaPrincipal, @"imagenes\productos");
                     var extension = Path.GetExtension(archivos[0].FileName);
                     using (var fileStreams = new FileStream(Path.Combine(subidas, nombreArchivo + extension), FileMode.Create))
                     {
                         archivos[0].CopyTo(fileStreams);
                     }
-                    slider.UrlImagen = @"\imagenes\sliders\" + nombreArchivo + extension;
-                    _contenedorTrabajo.SliderProducto.Add(slider);
+                    producto.ImagenUrl = @"\imagenes\productos\" + nombreArchivo + extension;
+                    _contenedorTrabajo.Producto.Add(producto);
                     _contenedorTrabajo.Save();
                     return RedirectToAction(nameof(Index));
                 }
@@ -53,40 +51,38 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                 }
 
             }
-            return View(slider);
+            return View(producto);
         }
         [HttpGet]
         public IActionResult Edit(int? id)
         {
             if (id != null)
             {
-                var slider = _contenedorTrabajo.SliderProducto.Get(id.GetValueOrDefault());
-                return View(slider);
+                var producto = _contenedorTrabajo.Producto.Get(id.GetValueOrDefault());
+                return View(producto);
             }
 
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(SliderProducto slider)
-
+        public IActionResult Edit(Producto producto)
         {
             if (ModelState.IsValid)
             {
                 string rutaPrincipal = _hostingEnvironment.WebRootPath;
                 var archivos = HttpContext.Request.Form.Files;
 
-
-                var sliderDdesdeBd = _contenedorTrabajo.SliderProducto.Get(slider.Id);
+                var productoDdesdeBd = _contenedorTrabajo.Producto.Get(producto.Id);
 
                 if (archivos.Count() > 0)
                 {
-                    //Nuevo imagen slider
+                    //Nuevo imagen producto
                     string nombreArchivo = Guid.NewGuid().ToString();
-                    var subidas = Path.Combine(rutaPrincipal, @"imagenes\sliders");
+                    var subidas = Path.Combine(rutaPrincipal, @"imagenes\productos");
                     var extension = Path.GetExtension(archivos[0].FileName);
                     //var nuevaExtension = Path.GetExtension(archivos[0].FileName);
-                    var rutaImagen = Path.Combine(rutaPrincipal, sliderDdesdeBd.UrlImagen.TrimStart('\\'));
+                    var rutaImagen = Path.Combine(rutaPrincipal, productoDdesdeBd.ImagenUrl.TrimStart('\\'));
                     if (System.IO.File.Exists(rutaImagen))
                     {
                         System.IO.File.Delete(rutaImagen);
@@ -96,44 +92,43 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                     {
                         archivos[0].CopyTo(fileStreams);
                     }
-                    slider.UrlImagen = @"\imagenes\sliders\" + nombreArchivo + extension;
-                    _contenedorTrabajo.SliderProducto.Update(slider);
+                    producto.ImagenUrl = @"\imagenes\productos\" + nombreArchivo + extension;
+                    _contenedorTrabajo.Producto.Update(producto);
                     _contenedorTrabajo.Save();
                     return RedirectToAction(nameof(Index));
                 }
                 else
                 {
                     //Aquí sería cuando la imagen ya existe y se conserva
-                    slider.UrlImagen = sliderDdesdeBd.UrlImagen;
+                    producto.ImagenUrl = productoDdesdeBd.ImagenUrl;
                 }
-                _contenedorTrabajo.SliderProducto.Update(slider);
+                _contenedorTrabajo.Producto.Update(producto);
                 _contenedorTrabajo.Save();
                 return RedirectToAction(nameof(Index));
             }
-            return View(slider);
+            return View(producto);
         }
         #region Llamadas a la API
         [HttpGet]
         public IActionResult GetAll()
-        { return Json(new { data = _contenedorTrabajo.SliderProducto.GetAll() }); }
+        { return Json(new { data = _contenedorTrabajo.Producto.GetAll() }); }
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var sliderDesdeBd = _contenedorTrabajo.SliderProducto.Get(id);
+            var productoDesdeBd = _contenedorTrabajo.Producto.Get(id);
             string rutaDirectorioPrincipal = _hostingEnvironment.WebRootPath;
-            var rutaImagen = Path.Combine(rutaDirectorioPrincipal, sliderDesdeBd.UrlImagen.TrimStart('\\'));
+            var rutaImagen = Path.Combine(rutaDirectorioPrincipal, productoDesdeBd.ImagenUrl.TrimStart('\\'));
             if (System.IO.File.Exists(rutaImagen))
             {
                 System.IO.File.Delete(rutaImagen);
             }
-            if (sliderDesdeBd == null)
+            if (productoDesdeBd == null)
             {
-                return Json(new { success = false, message = "Error borrando slider" });
+                return Json(new { success = false, message = "Error borrando producto" });
             }
-            _contenedorTrabajo.SliderProducto.Remove(sliderDesdeBd);
-
+            _contenedorTrabajo.Producto.Remove(productoDesdeBd);
             _contenedorTrabajo.Save();
-            return Json(new { success = true, message = "Slider Borrado Correctamente" });
+            return Json(new { success = true, message = "Producto Borrado Correctamente" });
         }
         #endregion
     }
