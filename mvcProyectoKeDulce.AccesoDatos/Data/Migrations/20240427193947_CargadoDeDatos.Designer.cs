@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvcProyectoKeDulce.Data;
 
@@ -11,9 +12,11 @@ using mvcProyectoKeDulce.Data;
 namespace mvcProyectoKeDulce.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240427193947_CargadoDeDatos")]
+    partial class CargadoDeDatos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -254,34 +257,6 @@ namespace mvcProyectoKeDulce.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Producto");
-                });
-
-
-            modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.SliderProducto", b =>
-
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Estado")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UrlImagen")
-
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-
-                    b.ToTable("SliderProducto");
-
                 });
 
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", b =>

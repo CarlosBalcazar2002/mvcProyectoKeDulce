@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository
     {
         IUsuarioRepository Usuario { get; }
         IProductoRepository Producto { get; }
+
 
         ISliderRepository SliderProducto { get; }
         void Save();

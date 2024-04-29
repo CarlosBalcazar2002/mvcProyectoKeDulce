@@ -1,4 +1,4 @@
-﻿using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
+using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
 using mvcProyectoKeDulce.Data;
 using System;
 using System.Collections.Generic;
@@ -18,14 +18,12 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
             //se agregan cada uno de los repositorios para que queden encapsulados
             Usuario = new UsuarioRepository(_context);
             Producto = new ProductoRepository(_context);
-
             SliderProducto = new SliderRepository(_context);
         }
         public IUsuarioRepository Usuario { get; private set; }
         public ISliderRepository SliderProducto { get; private set; }
         public IProductoRepository Producto { get; private set; }
-
-
+        
 
 
         public void Dispose()

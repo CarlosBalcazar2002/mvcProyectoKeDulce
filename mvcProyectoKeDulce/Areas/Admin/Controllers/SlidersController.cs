@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using NuGet.Protocol.Plugins;
 
 namespace mvcProyectoKeDulce.Areas.Admin.Controllers
+
 {
     [Authorize(Roles = "Administrador")]
     [Area("Admin")]
@@ -25,6 +26,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(SliderProducto slider)
+
         {
             if (ModelState.IsValid)
             {
@@ -67,11 +69,13 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(SliderProducto slider)
+
         {
             if (ModelState.IsValid)
             {
                 string rutaPrincipal = _hostingEnvironment.WebRootPath;
                 var archivos = HttpContext.Request.Form.Files;
+
 
                 var sliderDdesdeBd = _contenedorTrabajo.SliderProducto.Get(slider.Id);
 
@@ -127,6 +131,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                 return Json(new { success = false, message = "Error borrando slider" });
             }
             _contenedorTrabajo.SliderProducto.Remove(sliderDesdeBd);
+
             _contenedorTrabajo.Save();
             return Json(new { success = true, message = "Slider Borrado Correctamente" });
         }

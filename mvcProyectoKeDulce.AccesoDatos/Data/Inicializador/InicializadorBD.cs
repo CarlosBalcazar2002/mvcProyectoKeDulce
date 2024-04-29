@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using mvcProyectoKeDulce.Data;
 using mvcProyectoKeDulce.Modelos.Models;
@@ -12,10 +12,12 @@ using System.Threading.Tasks;
 namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
 {
     public class InicializadorBD : IInicializadorBD
+
     {
         private readonly ApplicationDbContext _bd;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+
 
         public InicializadorBD(ApplicationDbContext bd, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
@@ -35,12 +37,12 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
             }
             catch (Exception)
             {
-                // Manejar excepciones aquí si es necesario
+
             }
 
             if (_bd.Roles.Any(ro => ro.Name == Roles.Administrador)) return;
 
-            // Creación de roles
+
             _roleManager.CreateAsync(new IdentityRole(Roles.Administrador)).GetAwaiter().GetResult();
             _roleManager.CreateAsync(new IdentityRole(Roles.Registrado)).GetAwaiter().GetResult();
             _roleManager.CreateAsync(new IdentityRole(Roles.Cliente)).GetAwaiter().GetResult();
