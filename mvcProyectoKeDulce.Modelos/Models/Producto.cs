@@ -21,6 +21,8 @@ namespace mvcProyectoKeDulce.Modelos.Models
         public int Precio { get; set; }
         //[Display(Name = "Orden de Visualizacion")]
         //[Range(1, 100, ErrorMessage = "El valor debe estar entre 1 y 100")]
-        public int ImagenUrl { get; set; }
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Imagen")]
+        public string ImagenUrl { get; set; }
     }
 }

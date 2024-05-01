@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using mvcProyectoKeDulce.Modelos.Models;
-using mvcProyectoKeDulce.Models;
 
 namespace mvcProyectoKeDulce.Data
 {

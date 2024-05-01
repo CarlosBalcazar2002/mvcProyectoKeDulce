@@ -1,4 +1,4 @@
-﻿@using mvcProyectoKeDulce.Utilidades
+@using mvcProyectoKeDulce.Utilidades
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +12,8 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
 
-@*     <link rel="stylesheet" href="~/mvcProyectoKeDulce.styles.css" asp-append-version="true" />
-
- *@
+    <link rel="stylesheet" href="~/mvcProyectoKeDulce.styles.css" asp-append-version="true" />
+  
     <!--Css todos-->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
@@ -64,6 +63,21 @@
                                 </div>
                             </li>
                         }
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrar Contenidos</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Pedido</a>
+            <a class="dropdown-item" href="#">Ventas</a>
+            <a class="dropdown-item" href="#">Clientes</a>
+            <a class="dropdown-item" asp-area="Admin"
+               asp-controller="Sliders" asp-action="Index">Slider Para Productos</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="Usuarios"
+               asp-action="Index">Usuarios</a>
+            <a class="dropdown-item" asp-area="Admin" asp-controller="Productos"
+               asp-action="Index">Productos</a>
+        </div>
+    </li>
+}
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -104,11 +118,15 @@
                 </div>
             </div>
         </nav> *@
+
         <!--vista del Slider-->
         @if (ViewBag.IsHome == true)
         {
             <partial name ="_Slider" />
         }
+
+
+        </nav>
 
     </header>
     <div class="container">

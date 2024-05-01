@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
-using mvcProyectoKeDulce.Modelos.ViewModels;
 using mvcProyectoKeDulce.Models;
 using System.Diagnostics;
 
@@ -9,14 +7,13 @@ namespace mvcProyectoKeDulce.Areas.Cliente.Controllers
     [Area("Cliente")]
     public class HomeController : Controller
     {
-        private readonly IContenedorTrabajo _contenedorTrabajo;
-        public HomeController(IContenedorTrabajo contenedorTrabajo)
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
         {
-            _contenedorTrabajo = contenedorTrabajo;
+            _logger = logger;
         }
 
-        //Primera versión página de inicio sin paginación
-        [HttpGet]
         public IActionResult Index()
         {
             HomeVM homeVM = new HomeVM()
@@ -24,10 +21,11 @@ namespace mvcProyectoKeDulce.Areas.Cliente.Controllers
                 Sliders = _contenedorTrabajo.SliderProducto.GetAll(),
             };
 
-            //Esta línea es para poder saber si estamos en el home o no
+            //Esta lï¿½nea es para poder saber si estamos en el home o no
             ViewBag.IsHome = true;
 
             return View(homeVM);
+
         }
 
         public IActionResult Privacy()
