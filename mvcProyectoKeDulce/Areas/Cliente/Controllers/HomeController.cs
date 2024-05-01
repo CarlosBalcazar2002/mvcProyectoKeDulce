@@ -21,7 +21,7 @@ namespace mvcProyectoKeDulce.Areas.Cliente.Controllers
         {
             HomeVM homeVM = new HomeVM()
             {
-                Sliders = _contenedorTrabajo.Slider.GetAll(),
+                Sliders = _contenedorTrabajo.SliderProducto.GetAll(),
             };
 
             //Esta línea es para poder saber si estamos en el home o no
