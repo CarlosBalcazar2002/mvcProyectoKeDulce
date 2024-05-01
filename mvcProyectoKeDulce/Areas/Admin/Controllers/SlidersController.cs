@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 using NuGet.Protocol.Plugins;
 
 namespace mvcProyectoKeDulce.Areas.Admin.Controllers
-
 {
     [Authorize(Roles = "Administrador")]
     [Area("Admin")]
@@ -97,7 +96,10 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                         archivos[0].CopyTo(fileStreams);
                     }
                     slider.UrlImagen = @"\imagenes\sliders\" + nombreArchivo + extension;
+
+
                     _contenedorTrabajo.SliderProducto.Update(slider);
+
                     _contenedorTrabajo.Save();
                     return RedirectToAction(nameof(Index));
                 }
@@ -106,7 +108,10 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                     //Aquí sería cuando la imagen ya existe y se conserva
                     slider.UrlImagen = sliderDdesdeBd.UrlImagen;
                 }
+
+
                 _contenedorTrabajo.SliderProducto.Update(slider);
+
                 _contenedorTrabajo.Save();
                 return RedirectToAction(nameof(Index));
             }
@@ -115,6 +120,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         #region Llamadas a la API
         [HttpGet]
         public IActionResult GetAll()
+
         { return Json(new { data = _contenedorTrabajo.SliderProducto.GetAll() }); }
         [HttpDelete]
         public IActionResult Delete(int id)

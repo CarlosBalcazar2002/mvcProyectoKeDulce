@@ -284,6 +284,7 @@ namespace mvcProyectoKeDulce.Data.Migrations
 
                 });
 
+
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
