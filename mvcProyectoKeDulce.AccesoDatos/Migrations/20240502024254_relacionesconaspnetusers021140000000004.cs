@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace mvcProyectoKeDulce.Data.Migrations
+namespace mvcProyectoKeDulce.AccesoDatos.Migrations
 {
     /// <inheritdoc />
-    public partial class CargadoDeDatos : Migration
+    public partial class relacionesconaspnetusers021140000000004 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

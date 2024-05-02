@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
+﻿using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
 using mvcProyectoKeDulce.Data;
 using mvcProyectoKeDulce.Modelos.Models;
 using System;
@@ -10,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
 {
-
     public class SliderRepository : Repository<SliderProducto>, ISliderRepository
     {
         private readonly ApplicationDbContext _db;
-        public SliderRepository(DbContext context) : base(context)
+        public SliderRepository(ApplicationDbContext db) : base(db)
         {
+            _db = db;
         }
 
         public void Update(SliderProducto sliderProducto)
@@ -27,4 +26,3 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
         }
     }
 }
-

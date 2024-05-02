@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using mvcProyectoKeDulce.AccesoDatos.Data.Repository;
+using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
+using mvcProyectoKeDulce.Modelos.ViewModels;
 using mvcProyectoKeDulce.Models;
 using System.Diagnostics;
 
@@ -7,11 +10,10 @@ namespace mvcProyectoKeDulce.Areas.Cliente.Controllers
     [Area("Cliente")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IContenedorTrabajo _contenedorTrabajo;
+        public HomeController(IContenedorTrabajo contenedorTrabajo)
         {
-            _logger = logger;
+            _contenedorTrabajo = contenedorTrabajo;
         }
 
         public IActionResult Index()

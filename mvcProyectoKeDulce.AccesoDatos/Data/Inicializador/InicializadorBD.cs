@@ -54,7 +54,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
                 Email = "diegovalverde@gmail.com",
                 EmailConfirmed = true,
                 Nombre = "diego valverde",
-                
+                Celular="76843945",
                 
 
             }, "Aa1234567*").GetAwaiter().GetResult();
