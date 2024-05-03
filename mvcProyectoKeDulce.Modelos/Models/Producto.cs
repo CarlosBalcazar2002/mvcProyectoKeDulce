@@ -11,16 +11,20 @@ namespace mvcProyectoKeDulce.Modelos.Models
     {
         [Key]
         public int Id { get; set; }
+
         [Required(ErrorMessage = "Ingrese El Nombre Del Producto")]
         [Display(Name = "Nombre Del Producto")]
         public string NombreProducto { get; set; }
+
         [Required(ErrorMessage = "La descripcion es obligatoria")]
         public string Descripcion { get; set; }
-        //[DataType(DataType.ImageUrl)]
-        //[Display(Name = "image")]
-        public int Precio { get; set; }
-        //[Display(Name = "Orden de Visualizacion")]
-        //[Range(1, 100, ErrorMessage = "El valor debe estar entre 1 y 100")]
+
+        // Cambia el tipo de datos de Precio a decimal
+        [Required(ErrorMessage = "El precio es obligatorio")]
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)] // Formato de moneda
+        public decimal Precio { get; set; }
+
+        // Cambia el tipo de datos de ImagenUrl a string
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Imagen")]
         public string ImagenUrl { get; set; }

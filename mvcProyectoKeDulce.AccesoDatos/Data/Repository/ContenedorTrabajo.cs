@@ -22,7 +22,6 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
         }
         public IUsuarioRepository Usuario { get; private set; }
         public ISliderRepository SliderProducto { get; private set; }
-
         public IProductoRepository Producto { get; private set; }
         
 

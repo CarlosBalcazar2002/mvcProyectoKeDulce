@@ -2,26 +2,40 @@
 using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
 using mvcProyectoKeDulce.Modelos.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using NuGet.Protocol.Plugins;
+using System;
+using System.IO;
 
 namespace mvcProyectoKeDulce.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles ="Administrador")]
+
     [Area("Admin")]
     public class ProductosController : Controller
     {
         private readonly IContenedorTrabajo _contenedorTrabajo;
         private readonly IWebHostEnvironment _hostingEnvironment;
+
         public ProductosController(IContenedorTrabajo contenedorTrabajo,
             IWebHostEnvironment hostingEnvironment)
         {
             _contenedorTrabajo = contenedorTrabajo;
             _hostingEnvironment = hostingEnvironment;
         }
+
         [HttpGet]
-        public IActionResult Index() { return View(); }
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpGet]
-        public IActionResult Create() { return View(); }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Producto producto)
@@ -30,7 +44,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
             {
                 string rutaPrincipal = _hostingEnvironment.WebRootPath;
                 var archivos = HttpContext.Request.Form.Files;
-                if (archivos.Count() > 0)
+                if (archivos.Count > 0)
                 {
                     //Nuevo producto
                     string nombreArchivo = Guid.NewGuid().ToString();
@@ -49,10 +63,10 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                 {
                     ModelState.AddModelError("Imagen", "Debes seleccionar una imagen");
                 }
-
             }
             return View(producto);
         }
+
         [HttpGet]
         public IActionResult Edit(int? id)
         {
@@ -61,9 +75,9 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                 var producto = _contenedorTrabajo.Producto.Get(id.GetValueOrDefault());
                 return View(producto);
             }
-
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Producto producto)
@@ -73,16 +87,15 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                 string rutaPrincipal = _hostingEnvironment.WebRootPath;
                 var archivos = HttpContext.Request.Form.Files;
 
-                var productoDdesdeBd = _contenedorTrabajo.Producto.Get(producto.Id);
+                var productoDesdeBd = _contenedorTrabajo.Producto.Get(producto.Id);
 
-                if (archivos.Count() > 0)
+                if (archivos.Count > 0)
                 {
                     //Nuevo imagen producto
                     string nombreArchivo = Guid.NewGuid().ToString();
                     var subidas = Path.Combine(rutaPrincipal, @"imagenes\productos");
                     var extension = Path.GetExtension(archivos[0].FileName);
-                    //var nuevaExtension = Path.GetExtension(archivos[0].FileName);
-                    var rutaImagen = Path.Combine(rutaPrincipal, productoDdesdeBd.ImagenUrl.TrimStart('\\'));
+                    var rutaImagen = Path.Combine(rutaPrincipal, productoDesdeBd.ImagenUrl.TrimStart('\\'));
                     if (System.IO.File.Exists(rutaImagen))
                     {
                         System.IO.File.Delete(rutaImagen);
@@ -100,7 +113,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
                 else
                 {
                     //Aquí sería cuando la imagen ya existe y se conserva
-                    producto.ImagenUrl = productoDdesdeBd.ImagenUrl;
+                    producto.ImagenUrl = productoDesdeBd.ImagenUrl;
                 }
                 _contenedorTrabajo.Producto.Update(producto);
                 _contenedorTrabajo.Save();
@@ -111,7 +124,10 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         #region Llamadas a la API
         [HttpGet]
         public IActionResult GetAll()
-        { return Json(new { data = _contenedorTrabajo.Producto.GetAll() }); }
+        {
+            return Json(new { data = _contenedorTrabajo.Producto.GetAll() });
+        }
+
         [HttpDelete]
         public IActionResult Delete(int id)
         {
@@ -132,5 +148,4 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         }
         #endregion
     }
-
 }

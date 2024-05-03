@@ -2,68 +2,68 @@
 @using mvcProyectoKeDulce.Utilidades
 @model RegisterModel
 @{
-    ViewData["Title"] = "Registro De Usuarios";
+    ViewData["Title"] = "Registro de Usuarios";
 }
 
-<h1 class="text-center">@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="~/css/registro.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="register-form">
+        <h2>Regístrate</h2>
+        <hr>
 
-<div class="container mt-3">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="needs-validation" novalidate>
-                <h2 class="text-center mb-4">Crear Nueva Cuenta</h2>
-                <hr />
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="needs-validation" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
 
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" required />
-                    <label asp-for="Input.Email">Email</label>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" required>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Nombre" class="form-control" autocomplete="username" aria-required="true" placeholder="Nombre" required />
-                    <label asp-for="Input.Nombre">Nombre</label>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input asp-for="Input.Nombre" class="form-control" autocomplete="username" aria-required="true" placeholder="Nombre" required>
                     <span asp-validation-for="Input.Nombre" class="text-danger"></span>
                 </div>
+            </div>
 
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Direccion" class="form-control" autocomplete="username" aria-required="true" placeholder="Dirección" required />
-                    <label asp-for="Input.Direccion">Dirección</label>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <input asp-for="Input.Direccion" class="form-control" autocomplete="username" aria-required="true" placeholder="Dirección" required>
                     <span asp-validation-for="Input.Direccion" class="text-danger"></span>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Ciudad" class="form-control" autocomplete="username" aria-required="true" placeholder="Ciudad" required />
-                    <label asp-for="Input.Ciudad">Ciudad</label>
+                <div class="form-group">
+                    <label for="ciudad">Ciudad:</label>
+                    <input asp-for="Input.Ciudad" class="form-control" autocomplete="username" aria-required="true" placeholder="Ciudad" required>
                     <span asp-validation-for="Input.Ciudad" class="text-danger"></span>
                 </div>
+            </div>
 
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Contraseña" required />
-                    <label asp-for="Input.Password">Contraseña</label>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Contraseña" required>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirmar Contraseña" required />
-                    <label asp-for="Input.ConfirmPassword">Confirmar Contraseña</label>
+                <div class="form-group">
+                    <label for="confirm-password">Confirmar Contraseña:</label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirmar Contraseña" required>
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
-                <div class="form-group row">
-                     <div class="col-6"><h4>Seleccionar Rol De Usuario</h4></div>
-                     <div class="col-5">
-                          <input type="radio" name="radUsuarioRole" value="@Roles.Administrador" />@Roles.Administrador
-                          <input type="radio" name="radUsuarioRole" value="@Roles.Registrado" />@Roles.Registrado
-                     </div>
-                </div>
-                <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Registrarse</button>
-            </form>
-        </div>
+            </div>
+            <input id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-info" value="Registrarse">
+        </form>
     </div>
-</div>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+</body>
+</html>

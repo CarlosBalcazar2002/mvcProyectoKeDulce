@@ -1,0 +1,40 @@
+﻿<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @if (Model != null)
+        {
+            foreach (var producto in Model)
+            {
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="@producto.ImagenUrl" class="card-img-top" alt="@producto.NombreProducto">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">@producto.NombreProducto</h5>
+                            <p class="card-text text-dark">@producto.Descripcion</p>
+                            <p class="card-text text-success">Bs.@producto.Precio</p>
+                            <br />
+                            <div class="row">
+                                <div class="col">
+                                    <label>Cantidad:</label>
+                                    <!-- Input de tipo número -->
+                                    <input type="number" id="cantidad-@producto.Id" name="cantidad" min="1" value="1" class="form-control" />
+                                </div>
+                                &nbsp;
+                                <div class="col">
+                                    <button type="submit" class="btn btn-info form-control">Carrito</button>
+                                </div>
+                                <div class="col">
+                                    <a asp-action="Index" class="btn btn-primary form-control">Comprar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No hay productos disponibles.</p>
+        }
+
+    </div>
+</div>

@@ -16,16 +16,7 @@ namespace mvcProyectoKeDulce.Areas.Cliente.Controllers
 
         public IActionResult Index()
         {
-            HomeVM homeVM = new HomeVM()
-            {
-                Sliders = _contenedorTrabajo.SliderProducto.GetAll(),
-            };
-
-            //Esta l�nea es para poder saber si estamos en el home o no
-            ViewBag.IsHome = true;
-
-            return View(homeVM);
-
+            return View();
         }
 
         public IActionResult Privacy()

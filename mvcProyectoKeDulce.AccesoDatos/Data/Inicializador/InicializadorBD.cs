@@ -73,21 +73,21 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
                         NombreProducto = "Donnuts",
                         Descripcion = "Deliciosos donnuts con glaceado de chocolate.",
                         Precio = 8,
-                        ImagenUrl = "/imagenes/productos/donas.jpg"
+                        ImagenUrl = "/imagenes/productos/Donuts(1).jpg"
                     },
                     new Producto
                     {
                         NombreProducto = "Torta de chocolate",
-                        Descripcion = "Torta para 20 personas sabor chocolate.",
+                        Descripcion = "Torta para 20 personas sabor chocolate con decorado de frutillas.",
                         Precio = 90,
-                        ImagenUrl = "/imagenes/productos/tortas.jpg"
+                        ImagenUrl = "/imagenes/productos/Tortas(2).jpg"
                     },
                     new Producto
                     {
                         NombreProducto = "Manzanas Acarameladas",
-                        Descripcion = "Manzanas bañadas en caramelo.",
+                        Descripcion = "Manzanas bañadas en caramelo (Cantidad a Eleccion).",
                         Precio = 5,
-                        ImagenUrl = "/imagenes/productos/manzanas-acarameladas.jpg"
+                        ImagenUrl = "/imagenes/productos/Manzanas(1).jpg"
                     }
                 };
 

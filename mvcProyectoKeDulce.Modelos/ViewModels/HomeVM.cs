@@ -1,5 +1,4 @@
-﻿using mvcProyectoKeDulce.Modelos.Models;
-using mvcProyectoKeDulce.Models;
+﻿using mvcProyectoKeDulce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +9,7 @@ namespace mvcProyectoKeDulce.Modelos.ViewModels
 {
     public class HomeVM
     {
-        public IEnumerable<SliderProducto> Sliders { get; set; }
+        public IEnumerable<Slider> Sliders { get; set; }
         public int PageIndex { get; set; }
         public int TotalPages { get; set; }
     }
