@@ -42,9 +42,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acerca De</a>
                             <div class="dropdown-menu">
-
                                 <a class="dropdown-item" href="#">KeDulce</a>
-
                                 <a class="dropdown-item" href="https://wa.me/+59176096585">Contactos</a>
                             </div>
                         </li>
@@ -66,26 +64,22 @@
                             </li>
                         }
                     </ul>
-                    <form id="formBusqueda" class="busqueda d-flex ms-3 mr-4" asp-controller="Home" asp-action="ResultadoBusqueda" method="get">
-                        <div id="inputBusqueda" style="display: none;">
-                            <input id="inputTextoBusqueda" class="form-control text-dark" type="text" name="searchString" placeholder="Buscar productos ...">
-                        </div>
-                        <div class="input-group-append">
-                            <button id="btnMostrarBusqueda" class="btn btn-success" type="button">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search"></i>
-                            </button>
-                            <button id="btnBuscar" class="btn btn-success" type="submit" style="display: none;">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </div>
-                    </form>
+                            </a>
+                            <div class="dropdown-menu" style="position: absolute; top: -35%; left: -800%; right: auto;background-image: none;box-shadow:none; text-light;">
+                                <form class="busqueda d-flex ms-3 mr-4" asp-controller="Home" asp-action="ResultadoBusqueda" method="get">
+                                    <input class="form-control text-dark" type="text" name="searchString" placeholder="Buscar productos ...">
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
                 <partial name="_LoginPartial" />
             </div>
         </nav>
-
-      
-
         </nav>
         <!--vista del Slider-->
         @if (ViewBag.IsHome == true)
@@ -106,7 +100,7 @@
         
     </footer>
 
-    <script src="~/js/busqueda.js"></script>
+    @* <script src="~/js/busqueda.js"></script> *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

@@ -165,7 +165,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _contenedorTrabajo.Producto.GetAll(includeProperties: "Categoria") });
+            return Json(new { data = _contenedorTrabajo.Producto.GetAll() });
         }
 
         [HttpDelete]
