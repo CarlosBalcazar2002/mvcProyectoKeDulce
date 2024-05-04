@@ -66,8 +66,21 @@
                             </li>
                         }
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <form id="formBusqueda" class="busqueda d-flex ms-3 mr-4" asp-controller="Home" asp-action="ResultadoBusqueda" method="get">
+                        <div id="inputBusqueda" style="display: none;">
+                            <input id="inputTextoBusqueda" class="form-control text-dark" type="text" name="searchString" placeholder="Buscar productos ...">
+                        </div>
+                        <div class="input-group-append">
+                            <button id="btnMostrarBusqueda" class="btn btn-success" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button id="btnBuscar" class="btn btn-success" type="submit" style="display: none;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
+                <partial name="_LoginPartial" />
             </div>
         </nav>
 
@@ -92,6 +105,8 @@
     <footer class="footer">
         
     </footer>
+
+    <script src="~/js/busqueda.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
