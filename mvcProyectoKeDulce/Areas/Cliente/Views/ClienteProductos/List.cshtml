@@ -1,0 +1,39 @@
+﻿@model IEnumerable<mvcProyectoKeDulce.Modelos.Models.Producto>
+
+@{
+    ViewData["Title"] = "Lista de productos";
+}
+
+<h2>@ViewData["Title"]</h2>
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var producto in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <img src="@producto.ImagenUrl" class="card-img-top" style="height: 200px; object-fit: cover" alt="@producto.NombreProducto">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">@producto.NombreProducto</h5>
+                        <p class="card-text text-dark">@producto.Descripcion</p>
+                        <p class="card-text text-success">Bs.@producto.Precio</p>
+                        <br />
+                        <form action="@Url.Action("AgregarAlCarrito", "ClienteProductos")" method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <label>Cantidad:</label>
+                                    <input type="number" name="cantidad" min="1" value="1" class="form-control" />
+                                    <input type="hidden" name="id" value="@producto.Id" />
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-info form-control">Agregar al carrito</button>
+                                </div>
+                            </div>
+                            @Html.AntiForgeryToken()
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

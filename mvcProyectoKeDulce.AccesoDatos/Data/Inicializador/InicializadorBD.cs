@@ -50,6 +50,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
             // Creación del primer usuario
             if (!_userManager.Users.Any(u => u.Email == "diegovalverde@gmail.com"))
             {
+
                 var adminUser = new ApplicationUser
                 {
                     UserName = "diegovalverde@gmail.com",

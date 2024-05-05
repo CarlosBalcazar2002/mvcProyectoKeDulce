@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvcProyectoKeDulce.Data;
 
@@ -11,9 +12,11 @@ using mvcProyectoKeDulce.Data;
 namespace mvcProyectoKeDulce.AccesoDatos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240502024254_relacionesconaspnetusers021140000000004")]
+    partial class relacionesconaspnetusers021140000000004
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,11 +305,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Precio")
-
-
-
                         .HasColumnType("decimal(10,2)");
-
 
                     b.HasKey("Id");
 
@@ -442,11 +441,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .IsRequired();
 
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.Producto", "Producto")
-
-
-
                         .WithMany("DetallesPedidos")
-
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -459,11 +454,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.Pedido", b =>
                 {
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", "Usuario")
-
-
-
                         .WithMany("Pedidos")
-
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Usuario");
@@ -478,18 +469,13 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .IsRequired();
 
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", "Usuario")
-
-
-
                         .WithMany("Ventas")
-
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Pedido");
 
                     b.Navigation("Usuario");
                 });
-
 
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.Producto", b =>
                 {
@@ -502,7 +488,6 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
 
                     b.Navigation("Ventas");
                 });
-
 #pragma warning restore 612, 618
         }
     }

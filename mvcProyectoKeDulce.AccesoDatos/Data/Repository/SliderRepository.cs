@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
 {
-
     public class SliderRepository : Repository<SliderProducto>, ISliderRepository
     {
         private readonly ApplicationDbContext _db;
@@ -28,4 +27,3 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
         }
     }
 }
-

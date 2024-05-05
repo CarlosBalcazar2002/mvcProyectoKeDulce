@@ -1,0 +1,57 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Carrito de compras";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th></th> <!-- Agregar una columna para el botón Eliminar -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producto in Model)
+            {
+                <tr>
+                    <td>@producto.NombreProducto</td>
+                    <td>@producto.Precio</td>
+                    <td>@producto.Cantidad</td>
+                    <td>@producto.Total</td>
+                    <td>
+                        <form action="@Url.Action("EliminarDelCarrito", "ClienteProductos")" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@producto.ProductoId" />
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <div>
+        <p>Cantidad total: @ViewData["CantidadTotal"]</p>
+        <p>Total general: @ViewData["TotalGeneral"]</p>
+        <div>
+            <form action="@Url.Action("VaciarCarrito", "ClienteProductos")" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">Vaciar Carrito</button>
+            </form>
+        </div>
+        <a asp-controller="ClienteProductos" asp-action="ConfirmarPedido" class="btn btn-primary">Confirmar Pedido</a>
+    </div>
+}
+else
+{
+    <p>No hay productos en el carrito.</p>
+}

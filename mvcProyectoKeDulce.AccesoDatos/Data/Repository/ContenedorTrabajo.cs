@@ -1,5 +1,6 @@
 using mvcProyectoKeDulce.AccesoDatos.Data.Repository.IRepository;
 using mvcProyectoKeDulce.Data;
+using mvcProyectoKeDulce.Modelos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,11 +20,19 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
             Usuario = new UsuarioRepository(_context);
             Producto = new ProductoRepository(_context);
             SliderProducto = new SliderRepository(_context);
+            Venta = new VentaRepository(_context);
+            Pedido = new PedidoRepository(_context);
+            DetallePedido = new DetallePedidoRepository(_context);
+
         }
         public IUsuarioRepository Usuario { get; private set; }
         public ISliderRepository SliderProducto { get; private set; }
         public IProductoRepository Producto { get; private set; }
-        
+        public IVentaRepository Venta { get; private set; }
+        public IPedidoRepository Pedido { get; private set; }
+        public IDetallePedidoRepository DetallePedido { get; private set; }
+
+
 
 
         public void Dispose()
