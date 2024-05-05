@@ -16,9 +16,11 @@ namespace mvcProyectoKeDulce.Modelos.Models
         [Required(ErrorMessage = "La descripcion es obligatoria")]
         public string Descripcion { get; set; }
 
+
         [Required(ErrorMessage = "El precio es obligatorio")]
         [Column(TypeName = "decimal(10,2)")]
         public decimal Precio { get; set; }
+
 
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Imagen")]

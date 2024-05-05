@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mvcProyectoKeDulce.Data;
 
@@ -11,9 +12,11 @@ using mvcProyectoKeDulce.Data;
 namespace mvcProyectoKeDulce.AccesoDatos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240504055504_primeramigracion")]
+    partial class primeramigracion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,11 +305,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Precio")
-
-
-
-                        .HasColumnType("decimal(10,2)");
-
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -362,10 +361,6 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("Celular")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Ciudad")
                         .IsRequired()
@@ -442,11 +437,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .IsRequired();
 
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.Producto", "Producto")
-
-
-
-                        .WithMany("DetallesPedidos")
-
+                        .WithMany()
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -459,11 +450,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.Pedido", b =>
                 {
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", "Usuario")
-
-
-
-                        .WithMany("Pedidos")
-
+                        .WithMany()
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Usuario");
@@ -478,31 +465,13 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .IsRequired();
 
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", "Usuario")
-
-
-
-                        .WithMany("Ventas")
-
+                        .WithMany()
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Pedido");
 
                     b.Navigation("Usuario");
                 });
-
-
-            modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.Producto", b =>
-                {
-                    b.Navigation("DetallesPedidos");
-                });
-
-            modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Pedidos");
-
-                    b.Navigation("Ventas");
-                });
-
 #pragma warning restore 612, 618
         }
     }

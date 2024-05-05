@@ -1,0 +1,22 @@
+﻿@model mvcProyectoKeDulce.Modelos.Models.Producto
+
+@{
+    ViewData["Title"] = "Detalle Producto";
+}
+
+<br />
+<div class="container mt-5">
+    <div class="card mb-3">
+        <img src="@Model.ImagenUrl" class="card-img-top" alt="@Model.NombreProducto">
+        <div class="card-body">
+            <h5 class="card-title text-primary">@Model.NombreProducto</h5>
+            <p class="card-text text-dark">@Html.Raw(Model.Descripcion)</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 pb-1">
+            <a asp-action="Index" class="btn btn-success btn-sm">Volver atrás</a>
+        </div>
+    </div>
+</div>

@@ -15,7 +15,9 @@ namespace mvcProyectoKeDulce.Modelos.Models
         [Required(ErrorMessage = "La fecha es obligatoria")]
         public DateTime Fecha { get; set; }
 
+
         public ICollection<DetallePedido> DetallesPedidos { get; set; }
+
 
     }
 }
