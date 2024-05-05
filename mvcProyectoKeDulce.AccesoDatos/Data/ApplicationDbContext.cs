@@ -14,10 +14,12 @@ namespace mvcProyectoKeDulce.Data
         //Poner aqui los modelos que se vayan creando
         public DbSet<Producto> Producto { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+
         public DbSet<SliderProducto> SliderProducto { get; set; }
-        public DbSet<Venta> Venta { get; set; }
-        public DbSet<Pedido> Pedido { get; set; }
+
         public DbSet<DetallePedido> DetallePedido { get; set; }
+        public DbSet<Pedido> Pedido { get; set; }
+        public DbSet<Venta> Venta { get; set; }
 
 
     }

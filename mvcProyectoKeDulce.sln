@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvcProyectoKeDulce", "mvcProyectoKeDulce\mvcProyectoKeDulce.csproj", "{58B1AA03-3B1F-431E-88AD-F68C2F256192}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mvcProyectoKeDulce", "mvcProyectoKeDulce\mvcProyectoKeDulce.csproj", "{58B1AA03-3B1F-431E-88AD-F68C2F256192}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvcProyectoKeDulce.AccesoDatos", "mvcProyectoKeDulce.AccesoDatos\mvcProyectoKeDulce.AccesoDatos.csproj", "{515BF9ED-F38F-405F-B160-EFA31A8CC5F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mvcProyectoKeDulce.AccesoDatos", "mvcProyectoKeDulce.AccesoDatos\mvcProyectoKeDulce.AccesoDatos.csproj", "{515BF9ED-F38F-405F-B160-EFA31A8CC5F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvcProyectoKeDulce.Modelos", "mvcProyectoKeDulce.Modelos\mvcProyectoKeDulce.Modelos.csproj", "{D58197D2-889B-4716-9E64-2D23924F692B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mvcProyectoKeDulce.Modelos", "mvcProyectoKeDulce.Modelos\mvcProyectoKeDulce.Modelos.csproj", "{D58197D2-889B-4716-9E64-2D23924F692B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvcProyectoKeDulce.Utilidades", "mvcProyectoKeDulce.Utilidades\mvcProyectoKeDulce.Utilidades.csproj", "{160525E7-4B42-4137-914C-DF3321AA0B2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mvcProyectoKeDulce.Utilidades", "mvcProyectoKeDulce.Utilidades\mvcProyectoKeDulce.Utilidades.csproj", "{160525E7-4B42-4137-914C-DF3321AA0B2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

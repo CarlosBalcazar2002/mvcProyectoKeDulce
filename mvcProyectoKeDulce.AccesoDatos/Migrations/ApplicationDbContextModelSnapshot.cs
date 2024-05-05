@@ -302,7 +302,11 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Precio")
+
+
+
                         .HasColumnType("decimal(10,2)");
+
 
                     b.HasKey("Id");
 
@@ -438,7 +442,11 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .IsRequired();
 
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.Producto", "Producto")
+
+
+
                         .WithMany("DetallesPedidos")
+
                         .HasForeignKey("ProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -451,7 +459,11 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.Pedido", b =>
                 {
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", "Usuario")
+
+
+
                         .WithMany("Pedidos")
+
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Usuario");
@@ -466,13 +478,18 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
                         .IsRequired();
 
                     b.HasOne("mvcProyectoKeDulce.Modelos.Models.ApplicationUser", "Usuario")
+
+
+
                         .WithMany("Ventas")
+
                         .HasForeignKey("UsuarioId");
 
                     b.Navigation("Pedido");
 
                     b.Navigation("Usuario");
                 });
+
 
             modelBuilder.Entity("mvcProyectoKeDulce.Modelos.Models.Producto", b =>
                 {
@@ -485,6 +502,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Migrations
 
                     b.Navigation("Ventas");
                 });
+
 #pragma warning restore 612, 618
         }
     }

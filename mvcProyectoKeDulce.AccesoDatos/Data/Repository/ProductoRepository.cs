@@ -17,6 +17,10 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
         {
             _db = db; 
         }
+        public IQueryable<Producto> AsQueryable()
+        {
+            return _db.Set<Producto>().AsQueryable();
+        }
         public void Update (Producto producto)
         {
             var objDesdeDb = _db.Producto.FirstOrDefault(s => s.Id == producto.Id);
