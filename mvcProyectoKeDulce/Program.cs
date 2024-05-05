@@ -10,11 +10,15 @@ using mvcProyectoKeDulce.AccesoDatos.Data.Inicializador;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("ConexionSQL") ?? throw new 
-    InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString1 = builder.Configuration.GetConnectionString("ConexionSQL") ?? throw new
+    InvalidOperationException("Connection string 'ConexionSQL' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+    options.UseSqlServer(connectionString1));
+
+var connectionString2 = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new
+    InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString2));
 
 //modificar para que se administre el manejo de roles
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
