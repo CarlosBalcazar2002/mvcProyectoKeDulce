@@ -20,6 +20,7 @@ namespace mvcProyectoKeDulce.Areas.Admin.Controllers
         }
         [HttpGet]
         public IActionResult Index() { return View(); }
+
         [HttpGet]
         public IActionResult Create() { return View(); }
         [HttpPost]
