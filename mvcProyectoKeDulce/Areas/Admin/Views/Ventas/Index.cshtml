@@ -1,0 +1,46 @@
+﻿@model IEnumerable<mvcProyectoKeDulce.Modelos.Models.Pedido>
+
+<div class="container mt-5">
+    <h2 class="text-center">Lista de Pedidos</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pedido in Model)
+        {
+            <tr>
+                <td>@pedido.Id</td>
+                <td>@pedido.Usuario.UserName</td>
+                <td>@pedido.Fecha</td>
+                <td>
+                        <a asp-area="Admin" asp-controller="Ventas" asp-action="VerDetallePedido" asp-route-id="@pedido.Id" class="btn btn-outline-primary">Ver Detalle</a>
+                </td>
+                <td>@pedido.Estado</td>
+                <td>
+                    @if (pedido.Estado == mvcProyectoKeDulce.Modelos.Models.EstadoPedido.Pendiente )
+                    {
+                        <form asp-controller="Ventas" asp-action="CambiarEstado" method="post">
+                            <input type="hidden" name="id" value="@pedido.Id" />
+                            <select name="estado">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Anulado">Anulado</option>
+                                <option value="Realizado">Realizado</option>
+                            </select>
+                            <button type="submit">Actualizar Estado</button>
+                        </form>
+                    }
+                </td>
+                    
+
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

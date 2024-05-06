@@ -79,6 +79,25 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
                 {
                     new Producto
                     {
+                        NombreProducto = "Choco Bomba",
+                        Descripcion = "Ideal para Una chocolateada caliente 🙈Temática Navideña con sospreso dentro de las choco bomba❤️",
+                        Precio = 20,
+                        ImagenUrl = "/imagenes/productos/Choco_Bomba (1).jpg"
+                    },
+                    new Producto
+                    {
+                        NombreProducto = "Torta Con Galletas Champaneras",
+                        Descripcion = "Lleva tres Leches 😍 Decoración Frutilla Y durazno 😍 Para 20 Personas ❤",
+                        Precio = 25,
+                        ImagenUrl = "/imagenes/productos/Torta_Con_Galletas_Champaneras (1).jpg"
+                    },
+                    new Producto
+                    {
+                        NombreProducto = "Tortas De Chocolate",
+                        Descripcion = "Torta de Chocolate Con Relleno Crema / Dulce de leche para 20 personas 😊",
+                        Precio = 99,
+                        ImagenUrl = "/imagenes/productos/Torta_Con_Galletas_Champaneras (1).jpg"
+                        
                         NombreProducto = "Donnuts",
                         Descripcion = "Deliciosos donnuts con glaceado de chocolate.",
                         Precio = 8,

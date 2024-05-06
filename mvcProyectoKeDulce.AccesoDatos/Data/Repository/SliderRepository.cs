@@ -17,7 +17,6 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
             _db = db;
         }
 
-
         public void Update(SliderProducto sliderProducto)
         {
             var objDesdeDb = _db.SliderProducto.FirstOrDefault(s => s.Id == sliderProducto.Id);

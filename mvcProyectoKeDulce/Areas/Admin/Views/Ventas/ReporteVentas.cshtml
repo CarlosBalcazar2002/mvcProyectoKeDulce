@@ -1,0 +1,25 @@
+﻿@model IEnumerable<mvcProyectoKeDulce.Modelos.Models.Venta>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número de Venta</th>
+            <th>Fecha y Hora</th>
+
+            <th>Nombre del Usuario del Pedido</th>
+            <th>Nombre del Usuario de la Venta</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venta in Model)
+        {
+            <tr>
+                <td>@venta.Id</td>
+                <td>@venta.Pedido.Fecha</td>
+                <td>@venta.Pedido.Usuario.Nombre</td>
+                <td>@venta.Usuario.Nombre</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
