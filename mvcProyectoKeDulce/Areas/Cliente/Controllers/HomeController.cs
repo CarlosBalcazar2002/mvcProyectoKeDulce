@@ -10,6 +10,7 @@ namespace mvcProyectoKeDulce.Areas.Cliente.Controllers
     [Area("Cliente")]
     public class HomeController : Controller
     {
+
         private readonly IContenedorTrabajo _contenedorTrabajo;
         public HomeController(IContenedorTrabajo contenedorTrabajo)
         {

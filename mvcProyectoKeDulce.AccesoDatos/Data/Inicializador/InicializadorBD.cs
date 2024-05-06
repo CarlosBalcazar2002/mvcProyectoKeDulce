@@ -50,7 +50,6 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
             // Creación del primer usuario
             if (!_userManager.Users.Any(u => u.Email == "diegovalverde@gmail.com"))
             {
-
                 var adminUser = new ApplicationUser
                 {
                     UserName = "diegovalverde@gmail.com",
@@ -104,7 +103,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
                         NombreProducto = "Torta Con Galletas Champaneras",
                         Descripcion = "Lleva tres Leches 😍 Decoración Frutilla Y durazno 😍 Para 20 Personas ❤",
                         Precio = 25,
-                        ImagenUrl = "/imagenes/productos/Torta_Con_Galletas_Champaneras.jpg(1)"
+                        ImagenUrl = "/imagenes/productos/Torta_Con_Galletas_Champaneras (1).jpg"
                     },
                     new Producto
                     {

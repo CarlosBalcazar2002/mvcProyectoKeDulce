@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace mvcProyectoKeDulce.AccesoDatos.Migrations
 {
     /// <inheritdoc />
-    public partial class primeramigracion : Migration
+    public partial class inicializador : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
