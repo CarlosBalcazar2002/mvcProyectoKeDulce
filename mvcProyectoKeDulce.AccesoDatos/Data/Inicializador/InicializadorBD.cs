@@ -60,24 +60,10 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
 
                 var result = _userManager.CreateAsync(adminUser, "Aa1234567*").GetAwaiter().GetResult();
 
-                if (result.Succeeded)
-                {
-                    _userManager.AddToRoleAsync(adminUser, Roles.Administrador).GetAwaiter().GetResult();
-                }
-            }
+            }, "Aa1234567*").GetAwaiter().GetResult();
 
-            // Creación del segundo usuario
-            if (!_userManager.Users.Any(u => u.Email == "nia20bh@gmail.com"))
-            {
-                var otroUsuario = new ApplicationUser
-                {
-                    UserName = "nia20bh@gmail.com",
-                    Email = "nia20bh@gmail.com",
-                    EmailConfirmed = true,
-                    Nombre = "Carlos Eduardo"
-                };
-
-                var result = _userManager.CreateAsync(otroUsuario, "Lafamilia_2002").GetAwaiter().GetResult();
+            ApplicationUser user = _bd.ApplicationUser.Where(u => u.Email == "diegovalverde@gmail.com").FirstOrDefault();
+            _userManager.AddToRoleAsync(user, Roles.Administrador).GetAwaiter().GetResult();
 
                 if (result.Succeeded)
                 {
@@ -111,6 +97,11 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Inicializador
                         Descripcion = "Torta de Chocolate Con Relleno Crema / Dulce de leche para 20 personas 😊",
                         Precio = 99,
                         ImagenUrl = "/imagenes/productos/Torta_Con_Galletas_Champaneras (1).jpg"
+                        
+                        NombreProducto = "Donnuts",
+                        Descripcion = "Deliciosos donnuts con glaceado de chocolate.",
+                        Precio = 8,
+                        ImagenUrl = "/imagenes/productos/donas.jpg"
                     },
                     new Producto
                     {
