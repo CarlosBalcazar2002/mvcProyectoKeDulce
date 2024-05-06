@@ -63,7 +63,8 @@ namespace mvcProyectoKeDulce.Areas.Ventas.Controllers
 
         public IActionResult ReporteVentas()
         {
-            var ventas = _contenedorTrabajo.Venta.GetAll(includeProperties: "Usuario,Pedido.Usuario,DetallesPedidos.Producto"); // Incluir los datos del usuario asociado al pedido y a la venta
+
+            var ventas = _contenedorTrabajo.Venta.GetAll(includeProperties: "Usuario,Pedido.Usuario"); // Incluir los datos del usuario asociado al pedido y a la venta
             return View(ventas);
         }
 
