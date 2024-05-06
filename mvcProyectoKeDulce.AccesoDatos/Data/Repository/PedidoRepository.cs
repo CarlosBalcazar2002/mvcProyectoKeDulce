@@ -22,6 +22,7 @@ namespace mvcProyectoKeDulce.AccesoDatos.Data.Repository
             var objDesdeDb = _db.Pedido.FirstOrDefault(s => s.Id == pedido.Id);
             objDesdeDb.UsuarioId = pedido.UsuarioId;
             objDesdeDb.Fecha = pedido.Fecha;
+            objDesdeDb.Estado = pedido.Estado;
         }
     }
 }

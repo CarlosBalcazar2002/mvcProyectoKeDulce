@@ -107,7 +107,7 @@ namespace mvcProyectoKeDulce.Areas.Identity.Pages.Account
             public string Nombre { get; set; }
             public string Direccion { get; set; }
             public string Ciudad { get; set; }
-
+            public string Celular { get; set; }
 
 
         }

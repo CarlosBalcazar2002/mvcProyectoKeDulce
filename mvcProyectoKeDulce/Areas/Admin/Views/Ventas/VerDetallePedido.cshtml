@@ -1,0 +1,37 @@
+﻿@model mvcProyectoKeDulce.Modelos.Models.Pedido
+
+<h1>Detalle del Pedido</h1>
+
+<div>
+    <h3>ID del Pedido: @Model.Id</h3>
+    <h3>Usuario: @Model.Usuario.UserName</h3>
+    <h3>Estado: @Model.Estado</h3>
+</div>
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detalle in Model.DetallesPedidos)
+        {
+            <tr>
+                <td>@detalle.Producto.NombreProducto</td>
+                <td>@detalle.Cantidad</td>
+                <td>@detalle.PrecioUnitario</td>
+                <td>@(detalle.PrecioUnitario * detalle.Cantidad)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <h3>Total del Pedido: @Model.DetallesPedidos.Sum(d => d.Total)</h3>
+</div>

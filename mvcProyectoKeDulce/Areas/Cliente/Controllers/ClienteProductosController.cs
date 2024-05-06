@@ -55,13 +55,14 @@ namespace mvcProyectoKeDulce.Areas.Cliente.Controllers
 
             for (int i = 0; i < cantidad; i++)
             {
-                productosEnCarrito.Add(producto);
+                productosEnCarrito.Add(producto); // Agregar el objeto completo
             }
 
             _httpContextAccessor.HttpContext.Session.SetString("Carrito", JsonConvert.SerializeObject(productosEnCarrito));
 
             return RedirectToAction("List");
         }
+
 
         public IActionResult Carrito()
         {
@@ -139,6 +140,72 @@ namespace mvcProyectoKeDulce.Areas.Cliente.Controllers
         }
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> ConfirmarPedido()
+        {
+            try
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                if (user == null)
+                {
+                    return Unauthorized();
+                }
+
+                var carrito = _httpContextAccessor.HttpContext.Session.GetString("Carrito");
+                var productosEnCarrito = string.IsNullOrEmpty(carrito) ? new List<Producto>() : JsonConvert.DeserializeObject<List<Producto>>(carrito);
+
+                // Agrupar productos por ID y sumar las cantidades
+                var productosAgrupados = productosEnCarrito
+                    .GroupBy(p => p.Id)
+                    .Select(g => new
+                    {
+                        ProductoId = g.Key,
+                        Cantidad = g.Count(), // Sumar las cantidades de los productos
+                        Producto = _contenedorTrabajo.Producto.Get(g.Key) // Cargar explícitamente el producto asociado
+                    })
+                    .ToList();
+
+                // Crear un nuevo pedido
+                var pedido = new Pedido
+                {
+                    UsuarioId = user.Id,
+                    Fecha = DateTime.Now,
+                    Estado = EstadoPedido.Pendiente,
+                    DetallesPedidos = new List<DetallePedido>()
+                };
+
+                // Crear detalles del pedido agrupados por producto
+                foreach (var productoAgrupado in productosAgrupados)
+                {
+                    var detallePedido = new DetallePedido
+                    {
+                        ProductoId = productoAgrupado.ProductoId,
+                        Producto = productoAgrupado.Producto, // Asignar el producto cargado
+                        Cantidad = productoAgrupado.Cantidad,
+                        PrecioUnitario = productoAgrupado.Producto.Precio, // Utilizar el precio del producto
+                        Total = productoAgrupado.Producto.Precio * productoAgrupado.Cantidad // Calcular el total
+                    };
+                    pedido.DetallesPedidos.Add(detallePedido);
+                }
+
+                // Guardar el pedido y los detalles en la base de datos
+                _contenedorTrabajo.Pedido.Add(pedido);
+                _contenedorTrabajo.Save();
+
+                // Limpiar el carrito de la sesión
+                _httpContextAccessor.HttpContext.Session.Remove("Carrito");
+
+                return View("ConfirmarPedido", pedido);
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir
+                return RedirectToAction("Error", "Home");
+            }
+        }
 
     }
 }
